@@ -13,16 +13,18 @@ switchBtn.addEventListener("click", () => {
 });
 
 const convertGbToMb = (size) => {
-    return size * 1024;
+    const result = size * 1024;
+    return format(result) + " MB";
 };
 
 const convertMbToGb = (size) => {
-    return size / 1024;
+    const result = size / 1024;
+    return result.toString().substring(0, 4) + " GB";
 };
 
 input.addEventListener("keyup", () => {
     const size = set ? convertGbToMb(input.value) : convertMbToGb(input.value);
-    output.innerHTML = set ? format(size) : size + `${set ? " MB" : " GB"}`;
+    output.innerHTML = size;
 });
 
 const format = (number) => {
